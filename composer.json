@@ -1,0 +1,15 @@
+{
+    "name": "vendor/hilfe",
+    "description": "Description of project hilfe.",
+    "authors": [
+        {
+            "name": "jonny",
+            "email": "ithelpdesk24@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "apigen/apigen": "dev-master",
+        "roave/better-reflection": "dev-master#c87d856"
+    }
+}
