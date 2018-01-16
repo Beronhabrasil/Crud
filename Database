@@ -1,0 +1,72 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 16-Jan-2018 às 20:07
+-- Versão do servidor: 5.6.26
+-- PHP Version: 5.5.38
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `dbkunden`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tblkunden`
+--
+
+CREATE TABLE `tblkunden` (
+  `id` int(11) NOT NULL,
+  `kdname` varchar(200) NOT NULL,
+  `kdvname` varchar(200) NOT NULL,
+  `kdstrasse` varchar(200) NOT NULL,
+  `kdplz` varchar(200) NOT NULL,
+  `kdort` varchar(200) NOT NULL,
+  `berufe` varchar(200) NOT NULL,
+  `ausweiss` varchar(200) NOT NULL,
+  `fahrer` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tblkunden`
+--
+
+INSERT INTO `tblkunden` (`id`, `kdname`, `kdvname`, `kdstrasse`, `kdplz`, `kdort`, `berufe`, `ausweiss`, `fahrer`) VALUES
+(1, 'Everton', 'Heissenberg', 'Berlinerstr 13', '012131', 'Brasilien', '', '', ''),
+(2, 'Jonny', 'Heissenberg', '12e', '012131', 'Brasilien', '', '', ''),
+(3, 'Paul', 'Panzer', 'Panzerstr.13', '01213', 'Entenhausen', '', '', ''),
+(4, 'Emerson', 'Rotten', 'Berlinerstr 13', '012131', 'Leipzig', '', '', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tblkunden`
+--
+ALTER TABLE `tblkunden`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tblkunden`
+--
+ALTER TABLE `tblkunden`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
