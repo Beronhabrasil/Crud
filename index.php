@@ -6,22 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Daten</title>
-
-       
-     
-     
         <script src="js/jquery-3.1.0.min.js"></script>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
+         <!-- Optional theme -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     </head>
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -50,15 +42,8 @@
                 <div class="col-sm-3">
                     <h2></h2>
                 </div>
-
                 <div class="col-sm-6">
-
                     <div class="input-group h2">
-
-
-
-
-
                         <form action="" id="search" method="POST">
                             <input type="text" name="key" />
                             <input type="submit" value="suche" />
@@ -68,22 +53,17 @@
                             <p>ubertragen</p>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-sm-3">
                     <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#Insert">Hinzufügen</a>
                 </div>
             </div> <!-- /#top -->
-
-
             <hr />
             <div id="list" class="row">
-
                 <div class="table-responsive " style="width: 100%; height: 100%;">
                     <table class="table table-striped" cellspacing="0" cellpadding="0">
                         <thead>
                             <tr>
-
                                 <th>Kundenname</th>
                                 <th>KundenNachname</th>
                                 <th>Strasse</th>
@@ -93,87 +73,46 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             <?php
                             include_once 'DB.php';
-
-
-
-
                             $db = new DB();
-
-
-
-
-
-
-
                             $result_per_page = 10;
-
-
                             $pages_nuw_rows = $db->query("select * from tblkunden ");
                             $number_of_results = $pages_nuw_rows->num_rows;
-
                             $number_of_pages = ceil($number_of_results / $result_per_page);
-
-
                             if (!isset($_GET['page'])) {
                                 $page = 1;
                             } else {
                                 $page = $_GET['page'];
                             }
-
                             $this_page_first_result = ($page - 1) * $result_per_page;
                             ?>
-                        <div id="bottom" class="row">
+                          <div id="bottom" class="row">
                             <div class="col-md-12">
-
                                 <ul class="pagination">
-
-
                                     <?php for ($page = 1; $page <= $number_of_pages; $page++) { ?>
-
                                         <?php echo ' <li><a href="index.php?page=' . $page . '">' . $page . '</a></li>';
                                         ?>
                                     <?php } ?>
                                 </ul>      
-
-
-
                             </div> <!-- /#bottom -->
                         </div>
-
 <?php
 $result = $db->query('select * from tblkunden LIMIT ' . $this_page_first_result . ',' . $result_per_page);
-
-
 $db->readtpage = $result;
 ?>
-
-
-
-                        <?php foreach ($db->readtpage as $row) {
-                            ?>
-
-
+                        <?php foreach ($db->readtpage as $row) {?>
                             <tr>
-
-
-
                                 <td><?php echo $row['kdname']; ?></td>
                                 <td><?php echo $row['kdvname']; ?></td>
                                 <td><?php echo $row['kdstrasse']; ?></td>
                                 <td><?php echo $row['kdplz']; ?></td>
                                 <td><?php echo $row['kdort']; ?></td>
                                 <td>
-                                    <a class="myview"  href="view.php? id=<?php echo $row['id'] ?>">  <button type="button" class="btn btn-success btn-xs "> View </button>  </a> 
+                                 <a class="myview"  href="view.php? id=<?php echo $row['id'] ?>">  <button type="button" class="btn btn-success btn-xs "> View </button>  </a> 
                                 </td>
-
                                 <td>  <button type="button" class="btn btn-danger btn-xs" 
-                                              data-toggle="modal" data-target="#<?php echo $row['id'] ?>">Bearbeiten</button>
-
-
-
+                                      data-toggle="modal" data-target="#<?php echo $row['id'] ?>">Bearbeiten</button>
                                 </td> 
                                 <td>   <form action="" method="POST" class="delete">           
                                         <input type="hidden"   name="id" value="<?php echo $row['id']; ?>"/>
@@ -181,16 +120,9 @@ $db->readtpage = $result;
                                     </form>  
                                 </td>
                             </tr>
-
-
-
-
                             </tbody>
-
-
                             <div class="modal fade" id="<?php echo $row['id'] ?>" role="dialog">
                                 <div class="modal-dialog">
-
                                     <!-- Modal content-->
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -199,11 +131,9 @@ $db->readtpage = $result;
                                         </div>
                                         <div class="modal-body">
                                             <form  class="edit" action="" method="POST">
-
                                                 <fieldset id="kunden">
                                                     <legend>Kundendaten</legend>
                                                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
-
                                                     <p>
                                                         <label>Name *:</label>
                                                         <input type="text" name="kdname" value="<?php echo $row['kdname']; ?>"/>
@@ -228,8 +158,6 @@ $db->readtpage = $result;
                                                         <input type="submit" value="Bearbeiten"/>
                                                     </p>
                                                 </fieldset>
-
-
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -239,25 +167,12 @@ $db->readtpage = $result;
 
                                 </div>
                             </div>     
-
-<?php } ?>
+                        <?php } ?>
 
                     </table>
                 </div>
 
             </div> <!-- /#list -->
-
-
-            <!-- /#main -->
-
-            <!-- Modal  edit-->
-
-
-
-
-
-
-
             <!-- Modal  delete-->
             <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
                 <div class="modal-dialog" role="document">
@@ -288,56 +203,26 @@ $db->readtpage = $result;
                                 <div class="form-group">
                                     <style>label{display: block;}</style>       
                                     <form action=""  class="form" method="POST">
-
                                         <legend>Kundendaten</legend>
-
-
                                         <label>Name *: </label> <input type="text" name="kdname" value="Paul"/>
-
-                                        <label>Vorname *:</label> <input type="text" name="kdvname" value="Panzer"/> 
-
-
+                                        <label>Vorname *:</label> <input type="text" name="kdvname" value="Panzer"/>
                                         <label>Strasse:</label> <input type="text" name="kdstrasse" value="Panzerstr.13"/>
-
-
                                         <label>PLZ: </label>    <input type="text" name="kdplz" value="01213"/>
-
-
                                         <label>Ort:</label><input type="text" name="kdort" value="Entenhausen"/>
-
-
                                         <input class="btn btn-success" type="submit" value="Senden"/>
-
-
-
-
-
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                     <script>
                         $(function () {
 
-
-
-
-                            $(".delete").submit(function ()
-                            {
-
-                                $.ajax(
-                                        {
+                            $(".delete").submit(function (){
+                                $.ajax({
                                             url: "http://localhost/git/delete.php",
                                             type: "POST",
                                             data: $(this).serialize(),
@@ -348,7 +233,7 @@ $db->readtpage = $result;
                                                 alert("Kein Daten");
                                             }
 
-                                        });
+                                 });
 
                                 return false;
                             });
@@ -356,8 +241,7 @@ $db->readtpage = $result;
 
                             $(".form").submit(function () {
                                 alert("Data gespeicher");
-                                $.ajax(
-                                        {
+                                $.ajax({
                                             url: "http://localhost/git/query.php",
                                             type: "POST",
                                             data: $(this).serialize(),
@@ -368,10 +252,10 @@ $db->readtpage = $result;
 
                                             error: function () {
                                                 alert("Kein Daten");
-                                            }
+                                                    }
 
 
-                                        });
+                                 });
 
                                 return false;
 
